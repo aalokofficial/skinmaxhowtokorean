@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- 카톡/SNS 공유시 미리보기 설정 -->
+  <meta property="og:title" content="스킨맥스 사용설명" />
+  <meta property="og:description" content="스킨맥스 사용설명 영상" />
+  <meta property="og:image" content="aaloklogo.png" />
+  <meta property="og:url" content="" />
+
+  <title>스킨맥스 사용설명</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      color: #000000;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    /* 로고 이미지 */
+    .logo-wrap {
+      margin-bottom: 32px;
+    }
+    .logo-wrap img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+    }
+
+    .message {
+      font-size: 20px;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards 0.2s;
+    }
+
+    .sub {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #888888;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards 0.5s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+    🖼  로고 이미지
+    ✏️  수정: "aaloklogo.png" 를 본인 파일명으로 변경
+    📌  이미지 파일은 이 html 파일과 같은 폴더에 있어야 함
+  ============================================================ -->
+  <div class="logo-wrap">
+    <img src="aaloklogo.png" alt="Aalok Logo" />
+  </div>
+
+  <p class="message" id="msg"></p>
+  <p class="sub" id="sub"></p>
+
+
+  <script>
+
+  /* ============================================================
+     ✅ [수정 1] 유튜브 URL
+     ----------------------------------------------------------
+     ✏️  수정 방법:
+         유튜브 링크가 생기면 아래 빈 따옴표 안에 URL 붙여넣기
+         예) var YOUTUBE_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+
+     📌  비워두면 → "사용설명 영상이 준비중입니다" 표시
+     📌  링크 넣으면 → 즉시 유튜브로 이동
+  ============================================================ */
+  var YOUTUBE_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+
+
+  /* ============================================================
+     ⬇️  여기서부터는 수정하지 않아도 됩니다
+  ============================================================ */
+
+  var msgEl = document.getElementById('msg');
+  var subEl = document.getElementById('sub');
+
+  if (YOUTUBE_URL && YOUTUBE_URL.trim() !== '') {
+
+    // URL 있으면 → 즉시 유튜브로 이동
+    msgEl.innerHTML = '영상 페이지로 이동합니다...';
+    setTimeout(function() {
+      window.location.href = YOUTUBE_URL;
+    }, 300);
+
+  } else {
+
+    // URL 없으면 → 준비중 문구 표시
+    msgEl.innerHTML = '사용설명 영상이 준비중입니다.';
+    subEl.innerHTML = 'The tutorial video is coming soon.';
+
+  }
+
+  </script>
+
+</body>
+</html>
